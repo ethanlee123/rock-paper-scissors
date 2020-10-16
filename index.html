@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <!-- game played directly in console -->
+        <!-- rock paper scissors with the computer -->
+    </head>
+
+    <body>
+            <button class="choices" id="rock" type="button">rock</button>
+            <button class="choices" id="paper" type="button">paper</button>
+            <button class="choices" id="scissors" type="button">scissors</button>
+
+            <p id="result">Hello</p>
+            
+        </body>
+        
+        <script>
+        //select for EventTarget
+        let playerRock = document.getElementById("rock");
+        let playerPaper = document.getElementById("paper");
+        let playerScissors = document.getElementById("scissors");
+            
+        //click triggers playRound() and computerPlay()
+        playerRock.addEventListener("click", function(){playRound("rock", computerPlay())});   
+        playerPaper.addEventListener("click", function(){playRound("paper", computerPlay())});   
+        playerScissors.addEventListener("click", function(){playRound("scissors", computerPlay())});
+
+        //randomly choose computer's hand
+        function computerPlay() {
+            let choices = ["rock", "paper", "scissors"];
+            // select one of the choices above with the method below
+            let randChoice = choices[Math.floor(Math.random() * choices.length)];
+            return randChoice;
+        }
+
+        function playRound(playerSel, computerSel) {
+            console.log("Player: "+ playerSel, " Computer: " + computerSel);
+
+            if (playerSel=="rock" && computerSel=="scissors") {
+                winner = "player wins";
+            } else if (playerSel=="rock" && computerSel=="paper") {
+                winner = "computer wins";
+
+            } else if (playerSel=="paper" && computerSel=="rock") {
+                winner = "player wins";
+            } else if (playerSel=="paper" && computerSel=="scissors") {
+                winner = "computer wins";
+
+            } else if (playerSel=="scissors" && computerSel=="paper") {
+                winner = "player wins";
+            } else if (playerSel=="scissors" && computerSel=="rock") {
+                winner = "computer wins";
+
+            } else if (playerSel==computerSel) {
+                winner = "tie";
+            }
+            return result(winner);
+        }
+        //show winner in p tag html
+        function result(winner) {
+            document.getElementById("result").innerHTML = winner;
+            console.log("winner is: " + winner);
+        } 
+
+        
+    
+        
+
+
+    </script>
+
+</html>
